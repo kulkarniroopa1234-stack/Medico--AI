@@ -83,6 +83,28 @@
 </footer>
 
 <script src="script.js"></script>
+<!-- 1. Load the official Google API library -->
+<script src="google.com" async defer></script>
+
+<!-- 2. Configure your Google Sign-In backend -->
+<div id="g_id_onload"
+     data-client_id="YOUR_GOOGLE_CLIENT_googleusercontent.com"
+     data-callback="handleCredentialResponse"
+     data-auto_prompt="false">
+</div>
+
+<script>
+// 3. Define the function your button is trying to click
+function loginUser() {
+    google.accounts.id.prompt(); // This opens the Google login prompt window
+}
+
+// 4. Handle the login response data safely
+function handleCredentialResponse(response) {
+    const responsePayload = JSON.parse(atob(response.credential.split('.')));
+    alert("Welcome back, " + responsePayload.name + "!");
+}
+</script>
 
 </body>
 </html>
